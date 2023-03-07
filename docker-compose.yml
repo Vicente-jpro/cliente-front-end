@@ -13,4 +13,5 @@ services:
 
 # docker-compose run app ng new my-app-name --directory . --skipInstall
 # docker-compose up --build
+# docker-compose up
 # Tutorial: https://www.youtube.com/watch?v=e4n8Dja5PKo
