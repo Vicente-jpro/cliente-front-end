@@ -1,0 +1,16 @@
+version: '3'
+services:
+  app:
+    build: .
+    restart: always
+    volumes:
+      - "/code/node_modules"
+      - ./:/code
+    ports: 
+      - 4200:4200
+    command: 
+      ng serve --host 0.0.0.0
+
+# docker-compose run app ng new my-app-name --directory . --skipInstall
+# docker-compose up --build
+# Tutorial: https://www.youtube.com/watch?v=e4n8Dja5PKo
