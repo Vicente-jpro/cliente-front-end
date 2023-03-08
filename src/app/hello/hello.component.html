@@ -1,1 +1,11 @@
-<p>hello works! form component Hello.</p>
+<p>hello works! form component Hello. {{greet}}</p>
+
+<br>
+<ul>
+    <li *ngFor="let cliente of clientes">
+        Nome: {{cliente.nome}}  
+        <br> 
+        Idade: {{ cliente.idade }}
+        <hr>
+    </li>
+</ul>
