@@ -1,7 +1,7 @@
 <h1>Formulário de clientes</h1>
 <div class="container">
 
-    <form action="">
+    <form #clienteForm="ngForm" (ngSubmit)="onSubmit()">
     <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">ID</label>
         <input type="name" class="form-control" id="exampleFormControlInput1" 
@@ -23,6 +23,6 @@
         [(ngModel)]="cliente.bi" name="bi" placeholder="Seu nome">
     </div>
 
-    <button type="submit" class="btn btn-success" (click)="clicar()">Savar</button>
+    <button type="submit" class="btn btn-success" >Savar</button>
     </form>
 </div>
