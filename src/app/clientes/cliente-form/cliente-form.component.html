@@ -2,6 +2,15 @@
 <div class="container">
 
     <form #clienteForm="ngForm" (ngSubmit)="onSubmit()">
+
+        <div class="alert alert-success text-center" role="alert" *ngIf="success == true">
+            Cliente Salvo com sucesso.
+        </div>
+        <div class="alert alert-danger" role="alert" *ngFor="let error of errors">
+            {{ error }}
+        </div>
+
+
     <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">ID</label>
         <input type="name" class="form-control" id="exampleFormControlInput1" 
@@ -20,7 +29,7 @@
     <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">BI <span class="text-danger">*</span></label>
         <input type="name" class="form-control" id="exampleFormControlInput1" 
-        [(ngModel)]="cliente.bi" name="bi" placeholder="Seu nome">
+        [(ngModel)]="cliente.bi" name="bi" placeholder="Seu Bilhete de Identidade.">
     </div>
 
     <button type="submit" class="btn btn-success" >Savar</button>
