@@ -1,6 +1,7 @@
-<h1>Formulário de clientes</h1>
-<div class="container">
+<br><br><br>
 
+<div class="container">
+    <h1>Formulário de clientes</h1>
     <form #clienteForm="ngForm" (ngSubmit)="onSubmit()">
 
         <div class="alert alert-success text-center" role="alert" *ngIf="success == true">
@@ -10,16 +11,17 @@
             {{ error }}
         </div>
 
-
-    <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">ID</label>
-        <input type="name" class="form-control" id="exampleFormControlInput1" 
-        placeholder="ID" [ngModel]="cliente.idCliente" name="idCliente" disabled="true">
-    </div>
-    <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Data de Cadastro</label>
-        <input type="date" class="form-control" id="exampleFormControlInput1" 
-        [ngModel]="cliente.dataCadastro" name="dataCadastro" disabled="true">
+    <div *ngIf="clienteSalvo">
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">ID</label>
+            <input type="name" class="form-control" id="exampleFormControlInput1" 
+            placeholder="ID" [ngModel]="cliente.idCliente" name="idCliente" disabled="true">
+        </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Data de Cadastro</label>
+            <input type="date" class="form-control" id="exampleFormControlInput1" 
+            [ngModel]="cliente.dataCadastro" name="dataCadastro" disabled="true">
+        </div>
     </div>
     <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Nome <span class="text-danger">*</span></label>

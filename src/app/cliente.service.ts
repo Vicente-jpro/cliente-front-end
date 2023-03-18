@@ -14,11 +14,4 @@ export class ClienteService {
     return this.httpCliente.post<Cliente>('http://localhost:8080/api/clientes', cliente);
   }
 
-  getCliente() :Cliente{
-    let cliente: Cliente = new Cliente
-    cliente.bi = "999999999LZ9999";
-    cliente.dataCadastro = "2023-11-23";
-    cliente.nome = "Java é o melhor";
-    return cliente;
-  }
 }
