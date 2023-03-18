@@ -5,11 +5,11 @@ import { Cliente } from '../cliente';
 @Component({
   selector: 'app-cliente-lista',
   templateUrl: './cliente-lista.component.html',
-  styleUrls: ['./cliente-lista.component.css']
+  //styleUrls: ['./cliente-lista.component.css']
 })
 export class ClienteListaComponent implements OnInit{
 
-  clientes: Cliente[] = new Array();
+  clientes: Cliente[] = [];
 
   constructor(private clienteService: ClienteService){
 
@@ -21,6 +21,9 @@ export class ClienteListaComponent implements OnInit{
         .subscribe( response => {
           this.clientes = response;
           console.log(this.clientes);
+        }, errorResponse => {
+          this.clientes = errorResponse.error
+          console.log(errorResponse);
         })
   }
 
