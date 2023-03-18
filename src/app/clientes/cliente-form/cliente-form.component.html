@@ -33,7 +33,9 @@
         <input type="name" class="form-control" id="exampleFormControlInput1" 
         [(ngModel)]="cliente.bi" name="bi" placeholder="Seu Bilhete de Identidade.">
     </div>
-
-    <button type="submit" class="btn btn-success" >Savar</button>
+    <div class="d-grid gap-2 ">
+        <button type="submit" class="btn btn-success" > <i class="bi-save-fill"></i> Savar</button>
+        <button class="btn btn-warning" (click)="voltarParaListaCliente()"> <i class="bi-arrow-left-circle-fill"></i> Voltar</button>
+    </div>
     </form>
 </div>

@@ -1,20 +1,30 @@
 <br><br><br>
-<table class="table">
-    <thead>
-      <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Nome</th>
-        <th scope="col">B. Identidade</th>
-        <th scope="col">Data de cadastro</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let cliente of clientes">
-        <th scope="row"> {{ cliente.idCliente }}</th>
-        <td>{{ cliente.nome }}</td>
-        <td>{{ cliente.bi }}</td>
-        <td>{{ cliente.dataCadastro }}</td>
-      </tr>
+<div class="container">
 
-    </tbody>
-  </table>
+
+  <h1>Lista de Clientes</h1>
+  <a class="btn btn-warning" routerLink="/cliente-form" role="button" aria-disabled="true">
+    <i class="fa fa-plus"></i>  
+    Novo
+  </a>
+
+  <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Nome</th>
+          <th scope="col">B. Identidade</th>
+          <th scope="col">Data de cadastro</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cliente of clientes">
+          <th scope="row"> {{ cliente.idCliente }}</th>
+          <td>{{ cliente.nome }}</td>
+          <td>{{ cliente.bi }}</td>
+          <td>{{ cliente.dataCadastro }}</td>
+        </tr>
+
+      </tbody>
+    </table>
+</div>
