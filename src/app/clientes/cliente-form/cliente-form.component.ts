@@ -24,6 +24,10 @@ export class ClienteFormComponent implements OnInit{
       
   }
 
+  editar(cliente: Cliente ){
+    this.cliente = cliente;
+    this.router.navigate(['/cliente-form'])
+  }
   voltarParaListaCliente(){
     this.router.navigate(['/cliente-lista']);
   }

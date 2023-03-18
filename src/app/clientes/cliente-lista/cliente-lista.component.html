@@ -15,6 +15,8 @@
           <th scope="col">Nome</th>
           <th scope="col">B. Identidade</th>
           <th scope="col">Data de cadastro</th>
+          <th scope="col">Editar</th>
+          <th scope="col">Eliminar</th>
         </tr>
       </thead>
       <tbody>
@@ -23,6 +25,18 @@
           <td>{{ cliente.nome }}</td>
           <td>{{ cliente.bi }}</td>
           <td>{{ cliente.dataCadastro }}</td>
+          <td>
+            <!--Editar-->
+            <button type="button" class="btn btn-primary" (click)="editar(cliente)">
+            <i class="bi-pencil-square"></i>
+            </button>
+          </td>
+          <td>
+            <!--Eliminar-->
+            <button type="button" class="btn btn-danger">
+            <i class="bi-x-square-fill"></i>
+            </button>
+          </td>
         </tr>
 
       </tbody>
