@@ -8,10 +8,16 @@ import { Observable } from 'rxjs';
 })
 export class ClienteService {
 
+
+
   constructor(private httpCliente: HttpClient) { }
 
   salvar(cliente: Cliente): Observable<Cliente>{
     return this.httpCliente.post<Cliente>('http://localhost:8080/api/clientes', cliente);
+  }
+
+  getClientes(): Observable<Cliente[]>{
+    return this.httpCliente.get<Cliente[]>('http://localhost:8080/api/clientes');
   }
 
 }
