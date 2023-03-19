@@ -2,11 +2,13 @@
 
 <div class="container">
     <h1>Formulário de clientes</h1>
+    <h2>{{ cliente.idCliente ? 'Editar': 'Cadastrar'}}</h2>
     <form #clienteForm="ngForm" (ngSubmit)="onSubmit()">
 
         <div class="alert alert-success text-center" role="alert" *ngIf="success == true">
-            Cliente Salvo com sucesso.
+            {{ (cliente.idCliente != 0) ? 'Cliente atualizado com sucesso':'Cliente Salvo com sucesso.'}}
         </div>
+
         <div class="alert alert-danger" role="alert" *ngFor="let error of errors">
             {{ error }}
         </div>
@@ -34,8 +36,15 @@
         [(ngModel)]="cliente.bi" name="bi" placeholder="Seu Bilhete de Identidade.">
     </div>
     <div class="d-grid gap-2 ">
-        <button type="submit" class="btn btn-success" > <i class="bi-save-fill"></i> Savar</button>
-        <button class="btn btn-warning" (click)="voltarParaListaCliente()"> <i class="bi-arrow-left-circle-fill"></i> Voltar</button>
+        <button type="submit" class="btn btn-success" > 
+            <i class="bi-save-fill"></i> 
+            {{ cliente.idCliente ? 'Concluir edição': 'Salvar agora' }}
+        </button>
+        <button class="btn btn-warning" (click)="voltarParaListaCliente()"> 
+            <i class="bi-arrow-left-circle-fill"></i> 
+            Voltar para lista de clientes
+        </button>
     </div>
     </form>
+
 </div>

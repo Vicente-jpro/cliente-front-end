@@ -27,18 +27,45 @@
           <td>{{ cliente.dataCadastro }}</td>
           <td>
             <!--Editar-->
-            <button type="button" class="btn btn-primary" (click)="editar(cliente)">
+            <button type="button" class="btn btn-primary" routerLink="/cliente-form/{{ cliente.idCliente }}">
             <i class="bi-pencil-square"></i>
             </button>
           </td>
           <td>
             <!--Eliminar-->
-            <button type="button" class="btn btn-danger">
+                    <!-- Button trigger modal -->
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal" 
+             (click)="setClienteSelecionado(cliente)" data-bs-target="#exampleModal">
             <i class="bi-x-square-fill"></i>
             </button>
+            
           </td>
         </tr>
 
+        
+
       </tbody>
     </table>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar Cliente "{{cliente.nome}}"</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Tem certeza que pretende continuar com a operação?
+        <br>
+        Se continuar este cliente será eliminado definitivamente.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-light">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Fim nodal-->
 </div>
