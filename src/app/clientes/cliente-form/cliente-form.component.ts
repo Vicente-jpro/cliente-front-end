@@ -28,18 +28,26 @@ export class ClienteFormComponent implements OnInit{
   ngOnInit(): void {
     this.activatedRoute
     .params
-    .subscribe( urlParams => { 
+    .subscribe({
+      next: urlParams => { 
+
+      if(urlParams['id'] != undefined){
       this.idCliente = urlParams['id'];
-    });
-  
-      this.clienteService
-        .getClienteById(this.idCliente)
-        .subscribe( response => {
-          this.cliente = response
-        }, errorResponse =>{
-          this.cliente = errorResponse.error;
-        })
-      console.log(this.idCliente);
+      
+        this.clienteService
+          .getClienteById(this.idCliente)
+          .subscribe({ 
+            next: response => {
+            this.cliente = response
+            }, 
+            error: errorResponse =>{
+              this.cliente = errorResponse.error;
+            }})
+        console.log(this.idCliente);
+      
+      }
+    }});
+    
   
   }
 
@@ -54,32 +62,33 @@ export class ClienteFormComponent implements OnInit{
       .subscribe( response => {
         this.cliente = response
         this.errors = []
-      }, errorResponse =>{
-        this.errors = ['Erro ao atualizar o cliente.']
-      }
+        }, errorResponse =>{
+          this.errors = ['Erro ao atualizar o cliente.']
+        }
       )
   }
 
   onSubmit(){
-
     if (this.cliente.idCliente != 0){
-      this.atualizar( this.cliente, this.idCliente )
+       this.atualizar(this.cliente, this.cliente.idCliente)
     }else{
+       console.log(this.cliente);
 
-      this.clienteService
-      .salvar( this.cliente)
-      .subscribe( response => {
-        this.cliente = response
-        console.log(response)
-        this.success = true;
-        this.clienteSalvo = true;
-        this.errors = new Array();
+       this.clienteService
+       .salvar( this.cliente)
+       .subscribe( response => {
+         this.cliente = response
+         console.log(response)
+         this.success = true;
+         this.clienteSalvo = true;
+         this.errors = new Array();
         
-      }, errorResponse =>{
-        this.errors = errorResponse.error.errors; 
-        }
-      )
+       }, errorResponse =>{
+         this.errors = errorResponse.error.errors; 
+         }
+       )
     }
-
   }
+
+
 }

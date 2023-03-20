@@ -21,8 +21,8 @@ export class ClienteService {
       .patch<Cliente>(`http://localhost:8080/api/clientes/${idCliente}`, cliente);
   }
 
-  eliminar(idCliente: number){
-    this.httpCliente.delete(`http://localhost:8080/api/clientes/${idCliente}`)
+  eliminar(idCliente: number): Observable<any>{
+    return this.httpCliente.delete<any>(`http://localhost:8080/api/clientes/${idCliente}`)
   }
 
   getClientes(): Observable<Cliente[]>{

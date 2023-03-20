@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { ClienteService } from 'src/app/cliente.service';
 import { Cliente } from '../cliente';
+import { HttpRequest } from '@angular/common/http';
 
 @Component({
   selector: 'app-cliente-lista',
@@ -15,7 +16,8 @@ export class ClienteListaComponent implements OnInit{
   clientes: Cliente[] = [];
   cliente: Cliente = new Cliente();
   idCliente: number = 0;
-  
+  errors: string[] = []
+  isEliminado: boolean = false
 
   constructor(
     private clienteService: ClienteService, 
@@ -32,35 +34,46 @@ export class ClienteListaComponent implements OnInit{
     return this.cliente;
   }
 
-  eliminar(idCliente: number){
-    this.activatedRoute
-      .params
-      .subscribe( urlParams =>{
-        this.idCliente = urlParams['id'];
-        console.log(this.idCliente)
-      })
+  eliminar(cliente: Cliente){
 
-      this.clienteService
-        .eliminar(this.idCliente)
+    this.clienteService
+    .eliminar(cliente.idCliente)
+    .subscribe({ next: response => {
+      console.log('Cliente eliminado com sucesso', response)
+      this.isEliminado = true
+      },
+      error: errorResponse =>{
+        console.log( errorResponse.error )
+        this.ngOnInit()
+        this.isEliminado = true
+      },
+      complete: () =>{
+        console.info('Ação concluida com sucesso') 
+      }  
+    })
 
-    this.router.navigate(['/cliente-lista'])
+  
   }
  
   ngOnInit(): void {
+
       this.clienteService
         .getClientes()
-        .subscribe( response => {
-          this.clientes = response;
-          console.log(this.clientes);
-        }, errorResponse => {
-          this.clientes = errorResponse.error
-          console.log(errorResponse);
+        .subscribe({
+          next: (response) => {
+            this.clientes = response
+          },
+          error: errorResponse =>{
+            console.log("Erro na impressão",errorResponse);
+            this.clientes = errorResponse.error
+          },
+          complete: () =>{
+            console.log("Acção completa com sucesso.")
+          }
+
         })
 
-        const params = this.activatedRoute.params
-        if(this.idCliente != 0 && params != null ){
-          this.eliminar(this.idCliente);
-        }
+
   }
 
 

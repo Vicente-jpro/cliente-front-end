@@ -6,18 +6,18 @@
     <form #clienteForm="ngForm" (ngSubmit)="onSubmit()">
 
         <div class="alert alert-success text-center" role="alert" *ngIf="success == true">
-            {{ (cliente.idCliente != 0) ? 'Cliente atualizado com sucesso':'Cliente Salvo com sucesso.'}}
+            {{ (cliente.idCliente == 0) ? 'Cliente atualizado com sucesso':'Cliente Salvo com sucesso.'}}
         </div>
 
         <div class="alert alert-danger" role="alert" *ngFor="let error of errors">
             {{ error }}
         </div>
 
-    <div *ngIf="clienteSalvo">
+    <div >
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">ID</label>
             <input type="name" class="form-control" id="exampleFormControlInput1" 
-            placeholder="ID" [ngModel]="cliente.idCliente" name="idCliente" disabled="true">
+            placeholder="ID" [(ngModel)]="cliente.idCliente" name="idCliente" disabled="true">
         </div>
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Data de Cadastro</label>

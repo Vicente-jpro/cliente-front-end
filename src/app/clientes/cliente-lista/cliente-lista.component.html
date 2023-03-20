@@ -8,6 +8,11 @@
     Novo
   </a>
 
+  <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="isEliminado">
+     Cliente eliminado com successo.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+
   <table class="table">
       <thead>
         <tr>
@@ -61,8 +66,13 @@
         Se continuar este cliente será eliminado definitivamente.
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-light">Eliminar</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cancelar
+        </button>
+        <button type="button" class="btn btn-light" 
+        (click)="eliminar(cliente)" data-bs-dismiss="modal">
+          Eliminar
+        </button>
       </div>
     </div>
   </div>
