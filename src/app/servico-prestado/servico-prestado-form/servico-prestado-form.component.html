@@ -1,10 +1,12 @@
 <br><br><br><br>
 <div class="container col-sm-6">
     <h1> Cadastro de servicos prestados</h1>
+    
     <form #servicoPrestadoForm="ngForm" (ngSubmit)="onSubimit()">
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Data</label>
-            <input type="date" class="form-control" id="exampleFormControlInput1">
+            <input type="date" class="form-control" id="exampleFormControlInput1"
+            [(ngModel)]="servicoPestado.data" name="data">
           </div>
           <div class="mb-3">
             <select class="form-select" aria-label="Default select example">
@@ -16,11 +18,17 @@
           </div>
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Valor</label>
-            <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+            <input type="number" class="form-control" id="exampleFormControlInput1" 
+            [(ngModel)]="servicoPestado.valor" name="valor">
           </div>
           <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">Descrição</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+            [(ngModel)]="servicoPestado.descricao" name="descricao"></textarea>
+          </div>
+
+          <div class="mb-3">
+            <button type="submit" class="btn btn-success">Salvar</button>
           </div>
     </form> 
 </div>

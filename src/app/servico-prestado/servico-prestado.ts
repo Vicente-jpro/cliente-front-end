@@ -1,6 +1,6 @@
 import { Cliente } from "../clientes/cliente";
 
-export class servicoPrestado{
+export class ServicoPrestado{
     descricao: string;
     valor: number;
     data: string;
