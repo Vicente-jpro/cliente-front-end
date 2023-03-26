@@ -1,7 +1,7 @@
 <br><br><br><br>
 <div class="container col-sm-6">
     <h1> Cadastro de servicos prestados</h1>
-    <form action="">
+    <form #servicoPrestadoForm="ngForm" (ngSubmit)="onSubimit()">
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Data</label>
             <input type="date" class="form-control" id="exampleFormControlInput1">
