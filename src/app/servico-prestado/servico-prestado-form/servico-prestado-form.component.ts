@@ -11,22 +11,25 @@ import { Cliente } from 'src/app/clientes/cliente';
 })
 export class ServicoPrestadoFormComponent implements OnInit {
 
-  servicoPestado: ServicoPrestado;
+  servicoPrestado: ServicoPrestado;
+  cliente: Cliente;
   clientes: Cliente[] = [];
   errors: string[] = [];
   constructor(
     private servicoPrestadoService: ServicoPrestadoService,
     private clienteService: ClienteService
      ){
-    this.servicoPestado = new ServicoPrestado();
+    this.servicoPrestado = new ServicoPrestado();
+    this.cliente = new Cliente();
   }
 
   onSubimit(): void{
+    console.log("OnSubmit method", this.cliente, this.servicoPrestado);
     this.servicoPrestadoService
-      .salvar(this.servicoPestado)
+      .salvar(this.servicoPrestado)
       .subscribe({
         next: response =>{
-          this.servicoPestado = response
+          this.servicoPrestado = response
           this.errors = []
         },
         error: errorResponse =>{
@@ -34,7 +37,7 @@ export class ServicoPrestadoFormComponent implements OnInit {
         }
 
       })
-    console.log(this.servicoPestado)
+    
   }
 
   ngOnInit(): void {
@@ -43,11 +46,11 @@ export class ServicoPrestadoFormComponent implements OnInit {
       .subscribe({
         next: response => {
           this.clientes = response
-          console.log(response)
+         
         },
         error: errorResponse =>{
           this.clientes = errorResponse.error
-          console.log(errorResponse)
+         
         }
       })
   }

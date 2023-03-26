@@ -6,14 +6,16 @@
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Data</label>
             <input type="date" class="form-control" id="exampleFormControlInput1"
-            [(ngModel)]="servicoPestado.data" name="data">
+            [(ngModel)]="servicoPrestado.data" name="data">
           </div>
           <div class="mb-3">
-            <select class="form-select" aria-label="Default select example">
-            
-           
+            <select class="form-select" aria-label="Default select example"
+            [ngModelOptions]="{standalone: true}" 
+            [(ngModel)]="servicoPrestado.cliente.idCliente">
                 <option selected>Seleciona um cliente</option>
-                <option *ngFor="let clt of clientes" [ngValue]="clt.idCliente"> {{clt.nome}}</option>
+                <option *ngFor="let cliente of clientes" [ngValue]="cliente.idCliente"> 
+                  {{cliente.nome}}
+                </option>
               
             </select>
           </div>
@@ -21,12 +23,12 @@
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Valor</label>
             <input type="number" class="form-control" id="exampleFormControlInput1" 
-            [(ngModel)]="servicoPestado.valor" name="valor">
+            [(ngModel)]="servicoPrestado.valor" name="valor">
           </div>
           <div class="mb-3">
             <label for="exampleFormControlTextarea1" class="form-label">Descrição</label>
             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
-            [(ngModel)]="servicoPestado.descricao" name="descricao"></textarea>
+            [(ngModel)]="servicoPrestado.descricao" name="descricao"></textarea>
           </div>
 
           <div class="mb-3">
