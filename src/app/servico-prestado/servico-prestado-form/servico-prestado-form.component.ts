@@ -3,6 +3,7 @@ import { ServicoPrestado } from '../servico-prestado';
 import { ServicoPrestadoService } from 'src/app/servico-prestado.service';
 import { ClienteService } from 'src/app/cliente.service';
 import { Cliente } from 'src/app/clientes/cliente';
+import { DateFormatter } from 'src/app/utils/DateFormatter';
 
 
 @Component({
@@ -25,6 +26,10 @@ export class ServicoPrestadoFormComponent implements OnInit {
 
   onSubimit(): void{
     console.log("OnSubmit method", this.cliente, this.servicoPrestado);
+
+    let dataFormatada = new DateFormatter(this.servicoPrestado.data);
+    this.servicoPrestado.data = dataFormatada.getDate();
+
     this.servicoPrestadoService
       .salvar(this.servicoPrestado)
       .subscribe({
