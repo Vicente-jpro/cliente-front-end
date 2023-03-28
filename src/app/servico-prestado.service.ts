@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment.development';
 
 import { ServicoPrestado } from './servico-prestado/servico-prestado';
 
@@ -9,9 +10,11 @@ import { ServicoPrestado } from './servico-prestado/servico-prestado';
 })
 export class ServicoPrestadoService {
 
+  apiBaseURL: string = environment.apiBaseURL + '/api/servico-prestado';
+
   constructor(private httpClient: HttpClient) { }
 
   salvar(servicoPrestado: ServicoPrestado): Observable<ServicoPrestado>{
-    return this.httpClient.post<ServicoPrestado>('http://localhost:8080/api/servico-prestado', servicoPrestado);
+    return this.httpClient.post<ServicoPrestado>(`${this.apiBaseURL}`, servicoPrestado);
   }
 }

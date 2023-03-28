@@ -12,7 +12,7 @@
             <select class="form-select" aria-label="Default select example"
             [ngModelOptions]="{standalone: true}" 
             [(ngModel)]="servicoPrestado.cliente.idCliente">
-                <option selected>Seleciona um cliente</option>
+                <option value="0">Seleciona um cliente</option>
                 <option *ngFor="let cliente of clientes" [ngValue]="cliente.idCliente"> 
                   {{cliente.nome}}
                 </option>
