@@ -16,6 +16,8 @@ export class ServicoPrestadoFormComponent implements OnInit {
   cliente: Cliente;
   clientes: Cliente[] = [];
   errors: string[] = [];
+  success: boolean = false
+
   constructor(
     private servicoPrestadoService: ServicoPrestadoService,
     private clienteService: ClienteService
@@ -35,10 +37,12 @@ export class ServicoPrestadoFormComponent implements OnInit {
       .subscribe({
         next: response =>{
           this.servicoPrestado = response
+          this.success = true
           this.errors = []
         },
         error: errorResponse =>{
           this.errors = errorResponse.error.erros
+          
         }
 
       })

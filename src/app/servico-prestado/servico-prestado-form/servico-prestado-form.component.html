@@ -3,6 +3,14 @@
     <h1> Cadastro de servicos prestados</h1>
     
     <form #servicoPrestadoForm="ngForm" (ngSubmit)="onSubimit()">
+
+      <div class="alert alert-success text-center" role="alert" *ngIf="success == true">
+          {{ (servicoPrestado.idPrestacaoServico == 0) ? 'Prestação de servicos atualizado com sucesso':'Prestação de servicos Salvo com sucesso.'}}
+      </div>
+
+      <div class="alert alert-danger" role="alert" *ngFor="let error of errors">
+          {{ error }}
+      </div>
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Data</label>
             <input type="date" class="form-control" id="exampleFormControlInput1"
