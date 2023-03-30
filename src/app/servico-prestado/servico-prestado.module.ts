@@ -6,10 +6,12 @@ import { ServicoPrestadoRoutingModule } from './servico-prestado-routing.module'
 import { ServicoPrestadoFormComponent } from './servico-prestado-form/servico-prestado-form.component';
 import { ClientesModule } from '../clientes/clientes.module';
 import { RouterModule } from '@angular/router';
+import { ServicoPestadoListaComponent } from './servico-pestado-lista/servico-pestado-lista.component';
 
 @NgModule({
   declarations: [
-    ServicoPrestadoFormComponent
+    ServicoPrestadoFormComponent,
+    ServicoPestadoListaComponent,
   ],
   imports: [
     CommonModule,
@@ -20,6 +22,7 @@ import { RouterModule } from '@angular/router';
   ],
   exports:[
     ServicoPrestadoFormComponent,
+    ServicoPestadoListaComponent,
   ]
 })
 export class ServicoPrestadoModule { }
