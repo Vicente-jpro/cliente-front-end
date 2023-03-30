@@ -39,9 +39,11 @@ export class ServicoPrestadoFormComponent implements OnInit {
           this.servicoPrestado = response
           this.success = true
           this.errors = []
+          console.log("Sucesso ao salvar")
+          
         },
         error: errorResponse =>{
-          this.errors = errorResponse.error.erros
+          this.errors = errorResponse.error.errors
           
         }
 
