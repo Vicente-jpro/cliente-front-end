@@ -17,4 +17,6 @@ export class ServicoPrestadoService {
   salvar(servicoPrestado: ServicoPrestado): Observable<ServicoPrestado>{
     return this.httpClient.post<ServicoPrestado>(`${this.apiBaseURL}`, servicoPrestado);
   }
+
+  
 }
