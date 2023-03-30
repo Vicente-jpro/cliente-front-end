@@ -1,9 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-servico-prestado-lista',
   templateUrl: './servico-prestado-lista.component.html'
 })
-export class ServicoPrestadoListaComponent {
+export class ServicoPrestadoListaComponent  implements OnInit{
 
+  
+  constructor(){
+
+  }
+
+  ngOnInit(): void {
+      
+  }
 }
