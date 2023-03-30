@@ -37,10 +37,8 @@ export class ServicoPrestadoFormComponent implements OnInit {
       .subscribe({
         next: response =>{
           this.servicoPrestado = response
-          this.success = true
           this.errors = []
-          console.log("Sucesso ao salvar")
-          
+          this.success = true
         },
         error: errorResponse =>{
           this.errors = errorResponse.error.errors
@@ -64,6 +62,11 @@ export class ServicoPrestadoFormComponent implements OnInit {
          
         }
       })
+  }
+
+  limparFormulario(): void{
+    this.servicoPrestado = new ServicoPrestado()
+    
   }
 
 }
