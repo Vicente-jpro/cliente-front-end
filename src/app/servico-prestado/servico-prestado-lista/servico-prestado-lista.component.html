@@ -2,6 +2,28 @@
 <div class="container-fluid">
 
     <h1>Lista de Prestação de servicos</h1>
+    <form>
+      <div class="row">
+        <div class="col mb-3">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        </div>
+          <div class="col">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </div>
+      </div>
+      <div class="mb-3">
+        <select class="form-select" aria-label="Default select example"
+        [ngModelOptions]="{standalone: true}" 
+        [(ngModel)]="servicoPrestado.cliente.idCliente">
+            <option value="0">Seleciona um cliente</option>
+            <option *ngFor="let cliente of clientes" [ngValue]="cliente.idCliente"> 
+              {{cliente.nome}}
+            </option>
+          
+        </select>
+      </div>
+
+    </form>
 
     <table class="table">
         <thead>
