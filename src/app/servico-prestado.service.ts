@@ -18,5 +18,16 @@ export class ServicoPrestadoService {
     return this.httpClient.post<ServicoPrestado>(`${this.apiBaseURL}`, servicoPrestado);
   }
 
+  listarTodos(): Observable<ServicoPrestado[]>{
+    return this.httpClient.get<ServicoPrestado[]>(`${this.apiBaseURL}`);
+  }
   
+  pesquizarServicosPrestados(nomeCliente: string, dataServicoPrestado: string): 
+  Observable<ServicoPrestado[]>{
+    //http://localhost:8080/api/servico-prestado/search?nome=vicete&data=20/03/2023
+    return this.httpClient.get<ServicoPrestado[]>(
+      `${this.apiBaseURL}/search?nome=${nomeCliente}&data=${dataServicoPrestado}`
+      );
+  }
+
 }
