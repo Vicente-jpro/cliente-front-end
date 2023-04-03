@@ -15,6 +15,8 @@ export class ServicoPrestadoListaComponent  implements OnInit{
   servicoPrestados: ServicoPrestado[] = []
   dataServicoPrestado: string = ''
   nomeCliente: string = ''
+  servicoEncontrado: boolean = false
+
   constructor(private servicoPrestadoService: ServicoPrestadoService,
     private clienteService: ClienteService){
     
@@ -29,10 +31,12 @@ export class ServicoPrestadoListaComponent  implements OnInit{
         next: response =>{
           this.servicoPrestados = response
           console.log("Servico prestado obtido com sucesso")
+          this.servicoEncontrado = this.existeServico(this.servicoPrestados)
         },
         error: errorResponse =>{
           this.servicoPrestados = errorResponse.error
           console.log("Erro na obtenção dos servicos prestados", errorResponse.error)
+          this.servicoEncontrado = this.existeServico(this.servicoPrestados)
         }
       })
   } 
@@ -40,23 +44,31 @@ export class ServicoPrestadoListaComponent  implements OnInit{
   onSubmit(): void{
     let data = new DateFormatter(this.dataServicoPrestado)
     this.servicoPrestados = []
-    
+
     this.servicoPrestadoService
       .pesquizarServicosPrestados(this.nomeCliente, data.getDate())
       .subscribe({
         next: response =>{
           this.servicoPrestados = response
+          this.servicoEncontrado = this.existeServico(this.servicoPrestados)
         },
         error: errorResponse =>{
           this.servicoPrestados = []
           this.servicoPrestados = errorResponse.error
+          this.servicoEncontrado = this.existeServico(this.servicoPrestados)
           console.log("Erro na pesquisa", errorResponse.error);
         }
       })
     
   
-    console.log(data)
+
     console.log(this.nomeCliente) 
+  }
+
+  
+
+  existeServico(servicoPrestado: ServicoPrestado[]): boolean{
+    return (servicoPrestado.length > 0)
   }
 
 }
