@@ -3,13 +3,21 @@
     
 <main class="form-signin">
   <form #login="ngForm" (ngSubmit)="onSubmit()">
+
+
+
     <i class="bi-user" width="72" height="57"></i>
-    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+    <h1 class="h3 mb-3 fw-normal"> {{ (cadastrando == true) ? "Criar conta": "Entrar" }} </h1>
+
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      Email ou a Senha não está correta. 
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
 
     <div class="form-floating">
       <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"
       [(ngModel)]="user.email" name="email">
-      <label for="floatingInput">Email address</label>
+      <label for="floatingInput">Endereco de email</label>
     </div>
     <div class="form-floating">
       <input type="password" class="form-control" id="floatingPassword" placeholder="Password"
@@ -19,10 +27,27 @@
 
     <div class="checkbox mb-3">
       <label>
-        <input type="checkbox" value="remember-me"> Remember me
+        <input type="checkbox" value="remember-me"> lembrar
       </label>
     </div>
-    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+    <div class="mb-1">
+      <button class="w-100 btn btn-lg btn-primary" type="submit">
+        {{ (cadastrando == true) ? "Criar conta": "Entrar" }}
+      </button>
+    </div>
+    
+    <div class="mb-3">
+      <a class="w-100 btn btn-lg btn-light"  role="button" (click)="preparaCadastrar($event)"
+      *ngIf="!cadastrando">
+        Criar nova conta
+      </a>
+    </div>
+    <div class="mb-3">
+      <a class="w-100 btn btn-lg btn-light"  role="button" (click)="cancelar()"
+      *ngIf="cadastrando">
+        Cancelar
+      </a>
+    </div>
     <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
   </form>
 </main>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { User } from '../user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,13 +10,24 @@ import { User } from '../user';
 export class LoginComponent {
 
   user: User;
+  loginError: boolean = false
+  cadastrando: boolean = false
 
-  constructor(){
+  constructor(private router: Router){
     this.user = new User()
   }
 
   onSubmit() :void{
+    this.router.navigate(['/login'])
     console.log(this.user)
   }
 
+  preparaCadastrar(event: Event){
+    event.preventDefault
+    this.cadastrando = true
+  }
+
+  cancelar(){
+    this.cadastrando = false
+  }
 }
