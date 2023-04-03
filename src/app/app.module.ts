@@ -11,14 +11,12 @@ import { ClienteService } from './cliente.service';
 import { ServicoPrestadoModule } from './servico-prestado/servico-prestado.module';
 import { ServicoPrestadoService } from './servico-prestado.service';
 import { AuthModule } from './auth/auth.module';
-import { TeeeComponent } from './teee/teee.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    TeeeComponent,
- 
+
   ],
   imports: [
     BrowserModule,
