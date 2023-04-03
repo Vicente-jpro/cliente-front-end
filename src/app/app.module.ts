@@ -10,11 +10,15 @@ import { HomeComponent } from './home/home.component';
 import { ClienteService } from './cliente.service';
 import { ServicoPrestadoModule } from './servico-prestado/servico-prestado.module';
 import { ServicoPrestadoService } from './servico-prestado.service';
- 
+import { AuthModule } from './auth/auth.module';
+import { TeeeComponent } from './teee/teee.component';
+
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    TeeeComponent,
+ 
   ],
   imports: [
     BrowserModule,
@@ -23,6 +27,7 @@ import { ServicoPrestadoService } from './servico-prestado.service';
     ClientesModule,
     ServicoPrestadoModule,
     TemplateModule,
+    AuthModule,
   ],
   providers: [
     ClienteService,
