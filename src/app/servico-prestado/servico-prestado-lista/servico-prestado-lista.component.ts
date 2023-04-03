@@ -39,6 +39,7 @@ export class ServicoPrestadoListaComponent  implements OnInit{
 
   onSubmit(): void{
     let data = new DateFormatter(this.dataServicoPrestado)
+    this.servicoPrestados = []
     
     this.servicoPrestadoService
       .pesquizarServicosPrestados(this.nomeCliente, data.getDate())
