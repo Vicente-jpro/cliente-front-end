@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { User } from '../user';
+import { Usuario } from '../usuario';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,12 +9,12 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
 
-  user: User;
+  user: Usuario;
   loginError: boolean = false
   cadastrando: boolean = false
 
   constructor(private router: Router){
-    this.user = new User()
+    this.user = new Usuario()
   }
 
   onSubmit() :void{

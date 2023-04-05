@@ -1,11 +1,13 @@
-export class User {
+export class Usuario {
+    idUsuario: string
     username: string
     email: string
-    password: string
+    passwd: string
 
     constructor(){
+        this.idUsuario = ''
         this.username = ''
-        this.password = ''
+        this.passwd = ''
         this.email = ''
     }
 
