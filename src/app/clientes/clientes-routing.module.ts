@@ -9,7 +9,10 @@ const routes: Routes = [
     { path: 'form', component: ClienteFormComponent},
     { path: 'form/:id', component: ClienteFormComponent},
     { path: 'eliminar/:id', component: ClienteListaComponent},
-    { path: 'lista', component: ClienteListaComponent}
+    { path: 'lista', component: ClienteListaComponent},
+    //Quando o usuário acessar a raiz (clientes) dessa rota,
+    //Reedireciona para /lista de clientes
+    { path: '', redirectTo: '/clientes/lista', pathMatch: 'full'}
   ]}
 
   

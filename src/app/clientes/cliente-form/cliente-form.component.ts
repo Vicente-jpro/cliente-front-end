@@ -53,7 +53,7 @@ export class ClienteFormComponent implements OnInit{
 
  
   voltarParaListaCliente(){
-    this.router.navigate(['/lista']);
+    this.router.navigate(['/clientes/lista']);
   }
 
   atualizar(cliente: Cliente, idCliente: number){

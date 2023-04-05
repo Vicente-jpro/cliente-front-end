@@ -8,7 +8,8 @@
     Novo
   </a>
 
-  <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="isEliminado">
+  <div class="alert alert-success alert-dismissible fade show" role="alert" 
+    *ngIf="isEliminado">
      Cliente eliminado com successo.
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
@@ -32,7 +33,7 @@
           <td>{{ cliente.dataCadastro }}</td>
           <td>
             <!--Editar-->
-            <button type="button" class="btn btn-primary" routerLink="/cliente-form/{{ cliente.idCliente }}">
+            <button type="button" class="btn btn-primary" routerLink="/clientes/form/{{ cliente.idCliente }}">
             <i class="bi-pencil-square"></i>
             </button>
           </td>
