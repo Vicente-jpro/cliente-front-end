@@ -11,11 +11,13 @@ import { ClienteService } from './cliente.service';
 import { ServicoPrestadoModule } from './servico-prestado/servico-prestado.module';
 import { ServicoPrestadoService } from './servico-prestado.service';
 import { AuthModule } from './auth/auth.module';
+import { LayoutComponent } from './layout/layout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    LayoutComponent,
 
   ],
   imports: [

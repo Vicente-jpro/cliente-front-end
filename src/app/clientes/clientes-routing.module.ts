@@ -2,12 +2,16 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ClienteFormComponent } from './cliente-form/cliente-form.component';
 import { ClienteListaComponent } from './cliente-lista/cliente-lista.component';
+import { LayoutComponent } from '../layout/layout.component';
 
 const routes: Routes = [
-  { path: 'cliente-form', component: ClienteFormComponent},
-  { path: 'cliente-form/:id', component: ClienteFormComponent},
-  { path: 'cliente-eliminar/:id', component: ClienteListaComponent},
-  { path: 'cliente-lista', component: ClienteListaComponent}
+  { path: 'clientes', component: LayoutComponent, children:[
+    { path: 'form', component: ClienteFormComponent},
+    { path: 'form/:id', component: ClienteFormComponent},
+    { path: 'eliminar/:id', component: ClienteListaComponent},
+    { path: 'lista', component: ClienteListaComponent}
+  ]}
+
   
 ];
 
