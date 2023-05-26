@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Usuario } from '../usuario';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -9,17 +10,32 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
 
-  user: Usuario;
+  usuario: Usuario;
   loginError: boolean = false
   cadastrando: boolean = false
+  sucesso: boolean = false
 
-  constructor(private router: Router){
-    this.user = new Usuario()
+  constructor(private authService: AuthService, private router: Router){
+    this.usuario = new Usuario()
   }
 
   onSubmit() :void{
     this.router.navigate(['/login'])
-    console.log(this.user)
+    console.log(this.usuario)
+
+    this.authService
+      .salvar(this.usuario)
+      .subscribe({
+        next: response =>{
+          this.sucesso = true
+          console.log("Salvo com sucesso.")
+        },
+        error: errorResponse =>{
+          this.sucesso = false
+          console.log("Erro ao salvar.")
+        }
+      })
+
   }
 
   preparaCadastrar(event: Event){

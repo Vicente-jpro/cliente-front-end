@@ -9,19 +9,30 @@
     <i class="bi-user" width="72" height="57"></i>
     <h1 class="h3 mb-3 fw-normal"> {{ (cadastrando == true) ? "Criar conta": "Entrar" }} </h1>
 
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="sucesso">
+      Usuario Salvo com sucesso. 
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="!sucesso">
       Email ou a Senha não está correta. 
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 
+    <div class="form-floating" *ngIf="cadastrando == true">
+      <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com"
+      [(ngModel)]="usuario.username" name="email">
+      <label for="floatingInput">Nome</label>
+    </div>
+
     <div class="form-floating">
       <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"
-      [(ngModel)]="user.email" name="email">
+      [(ngModel)]="usuario.email" name="email">
       <label for="floatingInput">Endereco de email</label>
     </div>
     <div class="form-floating">
       <input type="password" class="form-control" id="floatingPassword" placeholder="Password"
-      [(ngModel)]="user.passwrd" name="passwrd">
+      [(ngModel)]="usuario.passwrd" name="passwrd">
       <label for="floatingPassword">Password</label>
     </div>
 
