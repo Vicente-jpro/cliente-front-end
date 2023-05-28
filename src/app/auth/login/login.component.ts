@@ -14,6 +14,7 @@ export class LoginComponent {
   loginError: boolean = false
   cadastrando: boolean = false
   sucesso: boolean = false
+  erros: [] = []
 
   constructor(private authService: AuthService, private router: Router){
     this.usuario = new Usuario()
@@ -32,7 +33,8 @@ export class LoginComponent {
         },
         error: errorResponse =>{
           this.sucesso = false
-          console.log("Erro ao salvar.")
+          this.erros = errorResponse.error.errors
+          console.log(this.erros)
         }
       })
 
