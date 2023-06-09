@@ -15,13 +15,17 @@ export class LoginComponent {
   cadastrando: boolean = false
   sucesso: boolean = false
   erros: [] = []
+  mensagemSucesso = "";
 
   constructor(private authService: AuthService, private router: Router){
     this.usuario = new Usuario()
   }
 
   onSubmit() :void{
-    this.router.navigate(['/login'])
+    this.router.navigate(['/home'])
+  }
+
+  cadastrar(){
     console.log(this.usuario)
 
     this.authService
@@ -29,17 +33,18 @@ export class LoginComponent {
       .subscribe({
         next: response =>{
           this.sucesso = true
+          this.mensagemSucesso = "Cadastro realizado com sucesso. Efectue o login."
+          this.loginError = false
           console.log("Salvo com sucesso.")
         },
         error: errorResponse =>{
           this.sucesso = false
           this.erros = errorResponse.error.errors
+          this.mensagemSucesso = "";
           console.log(this.erros)
         }
       })
-
   }
-
   preparaCadastrar(event: Event){
     event.preventDefault
     this.cadastrando = true

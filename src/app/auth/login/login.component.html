@@ -10,7 +10,7 @@
     <h1 class="h3 mb-3 fw-normal"> {{ (cadastrando == true) ? "Criar conta": "Entrar" }} </h1>
 
     <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="sucesso">
-      Usuario Salvo com sucesso. 
+      {{mensagemSucesso}}
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 
