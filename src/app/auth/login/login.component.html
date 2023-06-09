@@ -42,8 +42,15 @@
       </label>
     </div>
     <div class="mb-1">
-      <button class="w-100 btn btn-lg btn-primary" type="submit">
-        {{ (cadastrando == true) ? "Criar conta": "Entrar" }}
+      <button class="w-100 btn btn-lg btn-primary" type="submit" *ngIf="!cadastrando">
+        Entrar
+      </button>
+    </div>
+
+    <div class="mb-1">
+      <button class="w-100 btn btn-lg btn-primary" type="submit" *ngIf="cadastrando" 
+      (click)="cadastrar()">
+       Cadastrar
       </button>
     </div>
     

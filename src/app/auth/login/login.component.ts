@@ -16,6 +16,7 @@ export class LoginComponent {
   sucesso: boolean = false
   erros: [] = []
   mensagemSucesso = "";
+  criarConta = false
 
   constructor(private authService: AuthService, private router: Router){
     this.usuario = new Usuario()
