@@ -23,6 +23,7 @@ export class LoginComponent {
   }
 
   onSubmit() :void{
+    if(this.sucesso === true)
     this.router.navigate(['/home'])
   }
 
@@ -36,12 +37,12 @@ export class LoginComponent {
           this.sucesso = true
           this.mensagemSucesso = "Cadastro realizado com sucesso. Efectue o login."
           this.loginError = false
+          this.erros = []
           console.log("Salvo com sucesso.")
         },
         error: errorResponse =>{
           this.sucesso = false
           this.erros = errorResponse.error.errors
-          this.mensagemSucesso = "";
           console.log(this.erros)
         }
       })

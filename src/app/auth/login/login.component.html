@@ -13,9 +13,9 @@
       {{mensagemSucesso}}
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
-
-    <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="!sucesso">
-      Email ou a Senha não está correta. 
+    
+    <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngFor="let erro of erros">
+      {{erro}}
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 
