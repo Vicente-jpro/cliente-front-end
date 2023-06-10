@@ -29,6 +29,9 @@ export class LoginComponent {
       .subscribe({
         next: response =>{
           this.router.navigate(['/home'])
+          const access_token = JSON.stringify(response)
+          localStorage.setItem('key_access_token', access_token)
+
           console.log(response)
         },
         error: errorResponse =>{
