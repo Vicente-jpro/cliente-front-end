@@ -14,46 +14,26 @@ export class ClienteService {
   constructor(private httpCliente: HttpClient) { }
 
   salvar(cliente: Cliente): Observable<Cliente>{
-    const headers = this.getAuthorizationBearerToken()
-
-    return this.httpCliente.post<Cliente>(`${this.apiBaseURL}`, cliente, {headers});
+    return this.httpCliente.post<Cliente>(`${this.apiBaseURL}`, cliente);
   }
 
   atualizar(cliente: Cliente, idCliente: number): Observable<Cliente>{
-    const headers = this.getAuthorizationBearerToken()
-
     return this.httpCliente
-      .patch<Cliente>(`${this.apiBaseURL}/${idCliente}`, cliente, {headers});
+      .patch<Cliente>(`${this.apiBaseURL}/${idCliente}`, cliente);
   }
 
   eliminar(idCliente: number): Observable<any>{
-    const headers = this.getAuthorizationBearerToken();
-
-    return this.httpCliente.delete<any>(`${this.apiBaseURL}/${idCliente}, `, {headers})
+    return this.httpCliente.delete<any>(`${this.apiBaseURL}/${idCliente}`)
   }
 
   getClientes(): Observable<Cliente[]>{
-    const headers = this.getAuthorizationBearerToken();
-   
     return this.httpCliente
-      .get<any[]>(`${this.apiBaseURL}`, {headers});
+      .get<any[]>(`${this.apiBaseURL}`);
   }
 
   getClienteById(idCliente: number): Observable<Cliente>{
-    const headers = this.getAuthorizationBearerToken();
-
     return this.httpCliente
-      .get<Cliente>(`${this.apiBaseURL}/${idCliente}`, {headers});
+      .get<Cliente>(`${this.apiBaseURL}/${idCliente}`);
   }
-
-  getAuthorizationBearerToken(){
-    const tokenString =  localStorage.getItem('key_access_token')
-    const token = JSON.parse(tokenString || '{}')
-    const headers = {
-      'Authorization': 'Bearer '+token.access_token
-    }
-    return headers
-  }
-
 
 }
