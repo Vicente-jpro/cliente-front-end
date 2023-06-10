@@ -14,7 +14,7 @@ export class LoginComponent {
   loginError: boolean = false
   cadastrando: boolean = false
   sucesso: boolean = false
-  erros: [] = []
+  erros: string[] = []
   mensagemSucesso = "";
   criarConta = false
 
@@ -23,8 +23,20 @@ export class LoginComponent {
   }
 
   onSubmit() :void{
-    if(this.sucesso === true)
-    this.router.navigate(['/home'])
+    console.log(this.usuario)
+    this.authService
+      .tentarLogar(this.usuario)
+      .subscribe({
+        next: response =>{
+          this.router.navigate(['/home'])
+          console.log(response)
+        },
+        error: errorResponse =>{
+           this.erros = ['Usuário e/ou senha incorreto(s).']
+           
+        }
+      })
+
   }
 
   cadastrar(){
@@ -37,6 +49,8 @@ export class LoginComponent {
           this.sucesso = true
           this.mensagemSucesso = "Cadastro realizado com sucesso. Efectue o login."
           this.loginError = false
+          this.cadastrando = false;
+          this.usuario = new Usuario
           this.erros = []
           console.log("Salvo com sucesso.")
         },
