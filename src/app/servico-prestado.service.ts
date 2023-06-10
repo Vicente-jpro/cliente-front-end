@@ -15,19 +15,35 @@ export class ServicoPrestadoService {
   constructor(private httpClient: HttpClient) { }
 
   salvar(servicoPrestado: ServicoPrestado): Observable<ServicoPrestado>{
-    return this.httpClient.post<ServicoPrestado>(`${this.apiBaseURL}`, servicoPrestado);
+    const headers = this.getAuthorizationBearerToken()
+
+    return this.httpClient.post<ServicoPrestado>(`${this.apiBaseURL}`, servicoPrestado, {headers});
   }
 
   listarTodos(): Observable<ServicoPrestado[]>{
-    return this.httpClient.get<ServicoPrestado[]>(`${this.apiBaseURL}`);
+    const headers = this.getAuthorizationBearerToken()
+
+    return this.httpClient.get<ServicoPrestado[]>(`${this.apiBaseURL}`, {headers});
   }
   
   pesquizarServicosPrestados(nomeCliente: string, dataServicoPrestado: string): 
   Observable<ServicoPrestado[]>{
+    const headers = this.getAuthorizationBearerToken()
+
     //http://localhost:8080/api/servico-prestado/search?nome=vicete&data=20/03/2023
     return this.httpClient.get<ServicoPrestado[]>(
-      `${this.apiBaseURL}/search?nome=${nomeCliente}&data=${dataServicoPrestado}`
+      `${this.apiBaseURL}/search?nome=${nomeCliente}&data=${dataServicoPrestado}`,
+      {headers}
       );
+  }
+
+  getAuthorizationBearerToken(){
+    const tokenString =  localStorage.getItem('key_access_token')
+    const token = JSON.parse(tokenString || '{}')
+    const headers = {
+      'Authorization': 'Bearer '+token.access_token
+    }
+    return headers
   }
 
 }
