@@ -39,6 +39,7 @@ export class ClienteFormComponent implements OnInit{
           .subscribe({ 
             next: response => {
             this.cliente = response
+
             }, 
             error: errorResponse =>{
               this.cliente = errorResponse.error;
@@ -61,6 +62,7 @@ export class ClienteFormComponent implements OnInit{
       .atualizar(cliente, idCliente)
       .subscribe( response => {
         this.cliente = response
+        this.router.navigate(['/clientes/lista'])
         this.errors = []
         }, errorResponse =>{
           this.errors = ['Erro ao atualizar o cliente.']
