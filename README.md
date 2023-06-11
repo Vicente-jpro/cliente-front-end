@@ -26,4 +26,17 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
+## Aplication running
+
+`home`
+![alt text](https://github.com/Vicente-jpro/cliente-front-end/blob/master/src/assets/img-projects/home.png)
+`login`
+![alt text](https://github.com/Vicente-jpro/cliente-front-end/blob/master/src/assets/img-projects/login.png)
+`atualizar cliente`
 ![alt text](https://github.com/Vicente-jpro/cliente-front-end/blob/master/src/assets/img-projects/clientes-atualizar.png)
+`clista de clientes`
+![alt text](https://github.com/Vicente-jpro/cliente-front-end/blob/master/src/assets/img-projects/clientes-lista.png)
+
+![alt text](https://github.com/Vicente-jpro/cliente-front-end/blob/master/src/assets/img-projects/comprovativo.png)
+![alt text](https://github.com/Vicente-jpro/cliente-front-end/blob/master/src/assets/img-projects/prestacao-servico-search.png)
+![alt text](https://github.com/Vicente-jpro/cliente-front-end/blob/master/src/assets/img-projects/servico-prestados-form-novo.png)
