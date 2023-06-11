@@ -17,6 +17,12 @@ export class AuthService {
 
   constructor(private httpCliente: HttpClient) { }
 
+
+  isAutenticado(): boolean{
+    return false
+  }
+
+
   salvar(usuario: Usuario): Observable<any>{
     return this.httpCliente.post<Usuario>(`${this.apiBaseUrl}`, usuario);
   }
