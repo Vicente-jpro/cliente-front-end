@@ -37,6 +37,18 @@ export class AuthService {
     return false
   }
 
+  terminarSessao(){
+    localStorage.removeItem('access_token')
+  }
+
+  getUsuarioAutenticado(){
+    const token = this.obterToken();
+    if ( token ){
+      const userName = this.jwtHelper.decodeToken(token).user_name
+      return userName
+    }
+    return null
+  }
 
   salvar(usuario: Usuario): Observable<any>{
     return this.httpCliente.post<Usuario>(`${this.apiBaseUrl}`, usuario);
