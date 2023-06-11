@@ -30,13 +30,15 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 `home`
 ![alt text](https://github.com/Vicente-jpro/cliente-front-end/blob/master/src/assets/img-projects/home.png)
+
+## Aplication running
 `login`
 ![alt text](https://github.com/Vicente-jpro/cliente-front-end/blob/master/src/assets/img-projects/login.png)
 `atualizar cliente`
 ![alt text](https://github.com/Vicente-jpro/cliente-front-end/blob/master/src/assets/img-projects/clientes-atualizar.png)
 `clista de clientes`
 ![alt text](https://github.com/Vicente-jpro/cliente-front-end/blob/master/src/assets/img-projects/clientes-lista.png)
-
-![alt text](https://github.com/Vicente-jpro/cliente-front-end/blob/master/src/assets/img-projects/comprovativo.png)
+`Pesquisa de servicos`
 ![alt text](https://github.com/Vicente-jpro/cliente-front-end/blob/master/src/assets/img-projects/prestacao-servico-search.png)
+`Servico prestados`
 ![alt text](https://github.com/Vicente-jpro/cliente-front-end/blob/master/src/assets/img-projects/servico-prestados-form-novo.png)
