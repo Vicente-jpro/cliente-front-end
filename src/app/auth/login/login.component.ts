@@ -30,7 +30,7 @@ export class LoginComponent {
         next: response =>{
           this.router.navigate(['/home'])
           const access_token = JSON.stringify(response)
-          localStorage.setItem('key_access_token', access_token)
+          localStorage.setItem('access_token', access_token)
 
           console.log(response)
         },

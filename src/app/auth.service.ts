@@ -3,6 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { Usuario } from './auth/usuario';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 
 @Injectable({
@@ -14,11 +15,25 @@ export class AuthService {
   tokenUrl: string = environment.apiBaseURL + environment.obterTokenUrl 
   clientID: string = environment.clientID
   clientSecret: string = environment.clienteSecret
+  jwtHelper: JwtHelperService = new JwtHelperService()
 
   constructor(private httpCliente: HttpClient) { }
 
+  obterToken(){
+    const tokenString = localStorage.getItem('access_token')
+    if(tokenString){
+      const token = JSON.parse(tokenString).access_token
+      return token
+    }
+    return null
+  }
 
   isAutenticado(): boolean{
+    const token = this.obterToken()
+    if( token ){
+      const espirado = this.jwtHelper.isTokenExpired(token)
+      return !espirado
+    }
     return false
   }
 
