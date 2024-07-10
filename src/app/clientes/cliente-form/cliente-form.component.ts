@@ -43,8 +43,8 @@ export class ClienteFormComponent implements OnInit{
             }, 
             error: errorResponse =>{
               this.cliente = errorResponse.error;
+              console.log("Erro ao selecionar o cliente.")
             }})
-        console.log(this.idCliente);
       
       }
     }});
